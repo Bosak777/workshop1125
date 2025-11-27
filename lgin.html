@@ -212,13 +212,17 @@
             }
 
             if (isValid) {
-                // ここで実際のログイン処理を行う
                 loginSuccess.style.display = 'block';
                 console.log('ログイン情報:', {
                     email: emailInput.value,
                     password: passwordInput.value,
                     rememberMe: document.getElementById('rememberMe').checked
                 });
+
+                // ★1秒後にHOMEへ遷移
+                setTimeout(() => {
+                    window.location.href = "home.html";
+                }, 800);
             }
         });
 
