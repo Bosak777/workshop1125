@@ -51,7 +51,21 @@
             overflow-y: auto;
         }
 
-        .main-title { font-size: 22px; margin-bottom: 20px; }
+        .main-title { font-size: 22px; margin-bottom: 16px; }
+
+        /* 検索ボックス */
+        .search-area {
+            margin-bottom: 16px;
+        }
+
+        #searchInput {
+            width: 100%;
+            max-width: 480px;
+            padding: 8px 12px;
+            font-size: 14px;
+            border-radius: 20px;
+            border: 1px solid #d1d5db;
+        }
 
         .thumbnails {
             display: grid;
@@ -79,10 +93,9 @@
         }
     </style>
 </head>
+
 <body>
-
 <div class="layout">
-
     <!-- サイドバー -->
     <aside class="sidebar">
         <div class="sidebar-title">スタディルーム</div>
@@ -90,17 +103,19 @@
             <a href="home.html" class="nav-item active"><span class="icon"></span>HOME</a>
             <a href="task/index.html" class="nav-item"><span class="icon"></span>タスク</a>
             <a href="profile.html" class="nav-item"><span class="icon"></span>プロフィール</a>
-            <a href="post/post.html" class="nav-item"><span class="icon"></span>投稿</a>
-            <!-- <a href="record.html" class="nav-item"><span class="icon"></span>記録</a> -->
         </nav>
         <div class="sidebar-footer">
             ログイン中: user@example.com
         </div>
     </aside>
 
-    <!-- サムネイル一覧 -->
+    <!-- メイン -->
     <main class="main">
-        <h1 class="main-title">動画一覧</h1>
+        <h1 class="main-title">配信一覧</h1> 
+
+        <div class="search-area">
+            <input type="text" id="searchInput" placeholder="キーワードで検索">
+        </div>
 
         <div class="thumbnails">
             <div class="thumb-item">
@@ -133,11 +148,31 @@
                 <div class="thumb-title">テスト動画タイトル</div>
             </div>
         </div>
-
-        
-
     </main>
 </div>
 
+<!-- ★ 検索用のスクリプトはここに置く -->
+<script>
+    const searchInput = document.getElementById("searchInput");
+    const items = document.querySelectorAll(".thumb-item");
+
+    searchInput.addEventListener("input", () => {
+        const keyword = searchInput.value.trim().toLowerCase();
+
+        items.forEach(item => {
+            const title = item
+                .querySelector(".thumb-title")
+                .textContent
+                .toLowerCase();
+
+            if (keyword === "" || title.includes(keyword)) {
+                item.style.display = "";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
+</script>
 </body>
 </html>
+
