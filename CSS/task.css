@@ -39,6 +39,38 @@ body {
   font-size: 1.6rem;
   letter-spacing: 0.03em;
 }
+.sidebar {
+     width: 230px;
+    background-color: #2563eb;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 14px;
+
+    /* ★スクロールしても固定 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+}
+
+.sidebar-title {
+    font-size: 19px; font-weight: 700;
+    margin-bottom: 28px; padding-left: 6px;
+}
+
+.nav { display: flex; flex-direction: column; gap: 4px; }
+.nav-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 9px 12px;
+    color: #ffffff; text-decoration: none; font-size: 14px;
+    transition: background-color 0.12s;
+}
+.nav-item:hover { background-color: rgba(255, 255, 255, 0.18); }
+
+
+.icon { width: 20px; font-size: 17px; text-align: center; }
+.sidebar-footer { margin-top: auto; font-size: 12px; opacity: 0.8; padding-top: 10px; }
 
 /* メインレイアウト */
 .page-main {
