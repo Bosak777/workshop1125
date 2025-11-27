@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,21 +43,23 @@
             <h2 class="section-title">進捗</h2>
 
             <div class="progress-panel">
-                <!-- 円グラフ（33% の例） -->
+                <!-- 円グラフ -->
                 <div
+                    id="progress-circle"
                     class="progress-circle"
-                    data-progress="33"
-                    style="--progress: 0.33"
-                >
-                </div>
+                    data-progress="0"
+                    style="--progress: 0"
+                ></div>
 
                 <!-- 横バー＋テキスト -->
                 <div class="progress-info">
                     <p class="progress-label">進捗度数</p>
-                    <div class="progress-bar" aria-label="Task completion">
-                        <div class="progress-bar-fill"></div>
+                    <div id="progress-bar" class="progress-bar" aria-label="Task completion">
+                        <div id="progress-bar-fill" class="progress-bar-fill"></div>
                     </div>
-                    <p class="progress-detail">1 / 3 tasks completed (33%)</p>
+                    <p id="progress-detail" class="progress-detail">
+                        0 / 5 tasks completed (0%)
+                    </p>
                 </div>
             </div>
         </section>
@@ -65,24 +67,131 @@
         <!-- タスク一覧 -->
         <section class="section-card">
             <h2 class="section-title">今日のタスク</h2>
-            <ul class="task-list">
-                <li class="task-item">Task 1: 英語の文法</li>
-                <li class="task-item">Task 2: 歴史暗記</li>
-                <li class="task-item">Task 3: 数学課題</li>
-                <li class="task-item">Task 4: 国語宿題</li>
-                <li class="task-item">Task 5: 原子記号暗記</li>
+            <ul id="task-list" class="task-list">
+                <li class="task-item">
+                    <label class="task-check">
+                        <input type="checkbox" class="task-checkbox">
+                        <span class="task-text">Task 1: 英語の文法</span>
+                    </label>
+                    <button type="button" class="task-delete">削除</button>
+                </li>
+                <li class="task-item">
+                    <label class="task-check">
+                        <input type="checkbox" class="task-checkbox">
+                        <span class="task-text">Task 2: 歴史暗記</span>
+                    </label>
+                    <button type="button" class="task-delete">削除</button>
+                </li>
+                <li class="task-item">
+                    <label class="task-check">
+                        <input type="checkbox" class="task-checkbox">
+                        <span class="task-text">Task 3: 数学課題</span>
+                    </label>
+                    <button type="button" class="task-delete">削除</button>
+                </li>
+                <li class="task-item">
+                    <label class="task-check">
+                        <input type="checkbox" class="task-checkbox">
+                        <span class="task-text">Task 4: 国語宿題</span>
+                    </label>
+                    <button type="button" class="task-delete">削除</button>
+                </li>
+                <li class="task-item">
+                    <label class="task-check">
+                        <input type="checkbox" class="task-checkbox">
+                        <span class="task-text">Task 5: 原子記号暗記</span>
+                    </label>
+                    <button type="button" class="task-delete">削除</button>
+                </li>
             </ul>
         </section>
 
         <!-- 新規タスク追加 -->
         <section class="section-card">
             <h2 class="section-title">タスク 追加</h2>
-            <form class="task-form">
+            <form id="task-form" class="task-form">
                 <label for="new-task" class="task-label">内容:</label>
                 <input type="text" id="new-task" name="new-task" required class="task-input">
                 <button type="submit" class="task-button">追加</button>
-            </form> 
-        </section>  
+            </form>
+        </section>
     </main>
+
+    <!-- JS：チェック/削除/進捗計算 -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const taskList = document.getElementById("task-list");
+        const taskForm = document.getElementById("task-form");
+        const newTaskInput = document.getElementById("new-task");
+
+        const progressCircle = document.getElementById("progress-circle");
+        const progressBarFill = document.getElementById("progress-bar-fill");
+        const progressDetail = document.getElementById("progress-detail");
+
+        function updateProgress() {
+          const items = taskList.querySelectorAll(".task-item");
+          const total = items.length;
+          const done = taskList.querySelectorAll(".task-item.is-done").length;
+
+          const ratio = total > 0 ? done / total : 0;
+          const percent = Math.round(ratio * 100);
+
+          // 円グラフ & バー
+          progressCircle.dataset.progress = percent;
+          progressCircle.style.setProperty("--progress", ratio.toString());
+          progressBarFill.style.width = percent + "%";
+
+          // テキスト
+          progressDetail.textContent = `${done} / ${total} tasks completed (${percent}%)`;
+        }
+
+        function setupTaskItem(li) {
+          const checkbox = li.querySelector(".task-checkbox");
+          const deleteButton = li.querySelector(".task-delete");
+
+          // チェック ON/OFF
+          checkbox.addEventListener("change", function () {
+            li.classList.toggle("is-done", checkbox.checked);
+            updateProgress();
+          });
+
+          // 削除
+          deleteButton.addEventListener("click", function () {
+            li.remove();
+            updateProgress();
+          });
+        }
+
+        // 既存タスクにイベント付与
+        taskList.querySelectorAll(".task-item").forEach(setupTaskItem);
+
+        // 新規タスク追加
+        taskForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const text = newTaskInput.value.trim();
+          if (!text) return;
+
+          const li = document.createElement("li");
+          li.className = "task-item";
+          li.innerHTML = `
+            <label class="task-check">
+              <input type="checkbox" class="task-checkbox">
+              <span class="task-text"></span>
+            </label>
+            <button type="button" class="task-delete">削除</button>
+          `;
+          li.querySelector(".task-text").textContent = text;
+
+          taskList.appendChild(li);
+          newTaskInput.value = "";
+
+          setupTaskItem(li);
+          updateProgress();
+        });
+
+        // 初期表示時
+        updateProgress();
+      });
+    </script>
 </body>
 </html>
