@@ -10,12 +10,18 @@ body {
 
 /* ==== サイドバー（青） ==== */
 .sidebar {
-    width: 230px;
+     width: 230px;
     background-color: #2563eb;
     color: #ffffff;
     display: flex;
     flex-direction: column;
     padding: 20px 14px;
+
+    /* ★スクロールしても固定 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
 }
 
 .sidebar-title {
@@ -41,6 +47,9 @@ body {
     flex: 1;
     padding: 26px 32px;
     background-color: #ffffff;
+
+    /* ★サイドバー分の余白 */
+    margin-left: 230px;
 }
 
 .main-title { font-size: 22px; margin-bottom: 18px; }

@@ -29,6 +29,38 @@
             font-weight: bold;
             position: relative;
         }
+        .sidebar {
+                width: 230px;
+                background-color: #2563eb;
+                color: #ffffff;
+                display: flex;
+                flex-direction: column;
+                padding: 20px 14px;
+
+                /* ★スクロールしても固定 */
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+            }
+
+.sidebar-title {
+    font-size: 19px; font-weight: 700;
+    margin-bottom: 28px; padding-left: 6px;
+}
+
+.nav { display: flex; flex-direction: column; gap: 4px; }
+.nav-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 9px 12px;
+    color: #ffffff; text-decoration: none; font-size: 14px;
+    transition: background-color 0.12s;
+}
+.nav-item:hover { background-color: rgba(255, 255, 255, 0.18); }
+
+
+.icon { width: 20px; font-size: 17px; text-align: center; }
+.sidebar-footer { margin-top: auto; font-size: 12px; opacity: 0.8; padding-top: 10px; }
 
         .logout-btn {
             position: absolute;
@@ -54,22 +86,10 @@
             flex: 1;
             display: flex;
             height: 100%;
+            margin-left: 230px;
         }
 
         /* サイドバー */
-        .sidebar {
-            width: 220px;
-            background: #007bff;
-            color: white;
-            padding: 20px;
-            flex-shrink: 0; /* つぶれ防止 */
-        }
-
-        .sidebar h2 {
-            margin-bottom: 20px;
-            font-size: 22px;
-            text-align: center;
-        }
 
         .menu {
             list-style: none;
@@ -119,18 +139,20 @@
 <body>
     <header>
         ホーム
-        <button class="logout-btn" onclick="location.href='login.html'">ログインへ戻る</button>
+        <button class="logout-btn" onclick="location.href='lgin.html'">ログインへ戻る</button>
     </header>
 
-    <div class="main-area">
-        <aside class="sidebar">
-            <h2>メニュー</h2>
-            <ul class="menu">
-                <li>プロフィール</li>
-                <li>動画投稿</li>
-                <li>記録</li>
-            </ul>
-        </aside>
+    <aside class="sidebar">
+        <div class="sidebar-title">スタディルーム</div>
+        <nav class="nav">
+            <a href="home.html" class="nav-item"><span class="icon"></span>HOME</a>
+            <a href="post.html" class="nav-item"><span class="icon"></span>投稿</a>
+            <a href="profile.html" class="nav-item active"><span class="icon"></span>プロフィール</a>
+        </nav>
+        <div class="sidebar-footer">
+            ログイン中: user@example.com
+        </div>
+    </aside>
 
         <main class="thumbnail-wrapper">
             <!-- 必要な数のサムネイルを追加できます -->
