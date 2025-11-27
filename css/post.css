@@ -1,0 +1,232 @@
+/* ヘッダー */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    color: var(--white);
+    padding: 40px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 14px;
+    opacity: 0.95;
+}
+
+/* メインコンテンツ */
+.main-content {
+    background: var(--white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+/* フォームセクション */
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-section:last-child {
+    margin-bottom: 0;
+}
+
+.form-label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 12px;
+}
+
+/* 動画アップロードエリア */
+.video-upload-area {
+    border: 2px dashed var(--primary-blue);
+    border-radius: var(--border-radius);
+    padding: 40px 20px;
+    text-align: center;
+    background: var(--light-blue);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.video-upload-area:hover {
+    background: linear-gradient(135deg, #e0f2fe 0%, #eff6ff 100%);
+    border-color: var(--dark-blue);
+}
+
+.video-upload-area.drag-over {
+    background: linear-gradient(135deg, #cffafe 0%, #e0f2fe 100%);
+    border-color: var(--dark-blue);
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.upload-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 8px;
+}
+
+.upload-subtext {
+    font-size: 14px;
+    color: var(--dark-gray);
+}
+
+.video-input {
+    display: none;
+}
+
+/* ビデオプレビュー */
+.video-preview {
+    margin-top: 20px;
+    background: var(--light-gray);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+.preview-video {
+    width: 100%;
+    max-height: 400px;
+    border-radius: var(--border-radius);
+    background: #000;
+    margin-bottom: 15px;
+}
+
+.btn-remove {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: var(--white);
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-remove:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-2px);
+}
+
+/* 動画情報 */
+.video-info {
+    margin-top: 12px;
+    padding: 10px;
+    background: var(--light-blue);
+    border-left: 3px solid var(--primary-blue);
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--dark-gray);
+}
+
+/* フォーム入力 */
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    background: var(--light-blue);
+}
+
+.form-input {
+    height: 44px;
+}
+
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* 文字数カウント */
+.char-count {
+    font-size: 12px;
+    color: var(--dark-gray);
+    margin-top: 6px;
+    text-align: right;
+}
+
+/* ボタングループ */
+.button-group {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.button-group .btn {
+    flex: 1;
+    max-width: 200px;
+}
+
+.button-group .btn-secondary {
+    flex: 0 1 auto;
+    max-width: 120px;
+}
+
+/* レスポンシブ */
+@media (max-width: 640px) {
+    .container {
+        padding: 10px;
+    }
+
+    .header {
+        padding: 30px 15px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .video-upload-area {
+        padding: 30px 15px;
+    }
+
+    .upload-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group .btn {
+        max-width: 100%;
+    }
+
+    .button-group .btn-secondary {
+        max-width: 100%;
+    }
+}
