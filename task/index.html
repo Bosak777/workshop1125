@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management</title>
     <!-- CSS を読み込み -->
-    <link rel="stylesheet" href="./CSS/task.css">
+    <link rel="stylesheet" href="../CSS/task.css">
 </head>
 <body>
     <header class="page-header">
-        <h1>Task Management</h1>
+        <h1>タスク一覧</h1>
     </header>
 
     <main class="page-main">
         <!-- 達成度セクション -->
         <section class="section-card">
-            <h2 class="section-title">Progress</h2>
+            <h2 class="section-title">進捗</h2>
 
             <div class="progress-panel">
                 <!-- 円グラフ（33% の例） -->
@@ -28,7 +28,7 @@
 
                 <!-- 横バー＋テキスト -->
                 <div class="progress-info">
-                    <p class="progress-label">Overall completion</p>
+                    <p class="progress-label">進捗度数</p>
                     <div class="progress-bar" aria-label="Task completion">
                         <div class="progress-bar-fill"></div>
                     </div>
@@ -39,21 +39,23 @@
 
         <!-- タスク一覧 -->
         <section class="section-card">
-            <h2 class="section-title">Your Tasks</h2>
+            <h2 class="section-title">今日のタスク</h2>
             <ul class="task-list">
-                <li class="task-item">Task 1: Complete the project documentation.</li>
-                <li class="task-item">Task 2: Review pull requests.</li>
-                <li class="task-item">Task 3: Prepare for the team meeting.</li>
+                <li class="task-item">Task 1: 英語の文法</li>
+                <li class="task-item">Task 2: 歴史暗記</li>
+                <li class="task-item">Task 3: 数学課題</li>
+                <li class="task-item">Task 4: 国語宿題</li>
+                <li class="task-item">Task 5: 原子記号暗記</li>
             </ul>
         </section>
 
         <!-- 新規タスク追加 -->
         <section class="section-card">
-            <h2 class="section-title">Add New Task</h2>
+            <h2 class="section-title">タスク 追加</h2>
             <form class="task-form">
-                <label for="new-task" class="task-label">Task Description:</label>
+                <label for="new-task" class="task-label">内容:</label>
                 <input type="text" id="new-task" name="new-task" required class="task-input">
-                <button type="submit" class="task-button">Add Task</button>
+                <button type="submit" class="task-button">追加</button>
             </form> 
         </section>  
     </main>
