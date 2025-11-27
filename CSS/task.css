@@ -165,7 +165,7 @@ body {
 
 .progress-bar-fill {
   height: 100%;
-  width: calc(var(--progress) * 100%);
+  width: 0%;
   background-color: var(--accent-color);
   border-radius: var(--radius-xl);
   transition: width var(--transition-fast);
@@ -196,6 +196,62 @@ body {
   border: 1px solid #e5e7eb;
   background-color: #f9fafb;
   font-size: 0.95rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.task-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.task-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.task-text {
+  flex: 1;
+  word-break: break-all;
+}
+
+/* 完了状態の見た目 */
+.task-item.is-done {
+  background-color: #e0f2fe;
+  border-color: #93c5fd;
+}
+
+.task-item.is-done .task-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* 削除ボタン */
+.task-delete {
+  border: none;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background-color: #fee2e2;
+  color: #b91c1c;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.task-delete:hover {
+  background-color: #fecaca;
+  transform: translateY(-1px);
+}
+
+.task-delete:active {
+  transform: translateY(0);
 }
 
 /* =========================
