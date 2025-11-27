@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロフィール設定</title>
+    <link rel="stylesheet" href="CSS/profile.css">
+</head>
+<body>
+<div class="layout">
+
+    <!-- サイドバー -->
+    <aside class="sidebar">
+        <div class="sidebar-title">スタディルーム</div>
+        <nav class="nav">
+            <a href="home.html" class="nav-item"><span class="icon"></span>HOME</a>
+            <a href="task/index.html" class="nav-item"><span class="icon"></span>タスク</a>
+            <a href="profile.html" class="nav-item active"><span class="icon"></span>プロフィール</a>
+        </nav>
+        <div class="sidebar-footer">
+            ログイン中: user@example.com
+        </div>
+    </aside>
+
+ <main class="main">
+        <h1 class="main-title">プロフィール設定</h1>
+        <p class="description">ユーザー名・自己紹介・メールアドレス・パスワードを個別に変更できます。</p>
+
+        <!-- ユーザー名、自己紹介 -->
+        <div class="profile-box">
+            <div class="section-title">プロフィール</div>
+            <div class="form-row">
+                <div class="form-label">ユーザー名</div>
+                <div class="form-field">
+                    <input type="text" id="username">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-label">自己紹介</div>
+                <div class="form-field">
+                    <textarea id="bio"></textarea>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn-primary" id="saveProfileBtn">保存</button>
+            </div>
+        </div>
+
+        <!-- メールアドレス変更 -->
+        <div class="profile-box" style="margin-top: 28px;">
+            <div class="section-title">メールアドレス</div>
+            <div class="form-row">
+                <div class="form-label">メール</div>
+                <div class="form-field">
+                    <input type="email" id="email">
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn-primary" id="saveEmailBtn">保存して認証</button>
+            </div>
+        </div>
+
+        <!-- パスワード変更 -->
+        <div class="profile-box" style="margin-top: 28px;">
+            <div class="section-title">パスワード</div>
+            <div class="form-row">
+                <div class="form-label">現在のパスワード</div>
+                <div class="form-field">
+                    <input type="password" id="currentPassword">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-label">新しいパスワード</div>
+                <div class="form-field">
+                    <input type="password" id="newPassword">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-label">新しいパスワード（確認）</div>
+                <div class="form-field">
+                    <input type="password" id="confirmPassword">
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn-primary" id="savePasswordBtn">保存</button>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script>
+    // 保存メッセージ表示関数
+    function flashMessage(target) {
+        target.style.display = "block";
+        setTimeout(() => target.style.display = "none", 2000);
+    }
+
+    // プロフィール保存
+    document.getElementById("saveProfileBtn").addEventListener("click", () => {
+        flashMessage(document.getElementById("saveProfileMsg"));
+    });
+
+    // メール保存
+    document.getElementById("saveEmailBtn").addEventListener("click", () => {
+        flashMessage(document.getElementById("saveEmailMsg"));
+    });
+
+    // パスワード保存
+    document.getElementById("savePasswordBtn").addEventListener("click", () => {
+        const newPassword = document.getElementById("newPassword").value;
+        const confirm = document.getElementById("confirmPassword").value;
+        if (newPassword !== confirm) {
+            alert("新しいパスワードが一致していません。");
+            return;
+        }
+        flashMessage(document.getElementById("savePasswordMsg"));
+    });
+</script>
+</body>
+</html>

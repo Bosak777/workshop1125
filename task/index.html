@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <!-- CSS を読み込み -->
+    <link rel="stylesheet" href="../CSS/task.css">
+</head>
+<body>
+    <header class="page-header">
+        <h1>タスク一覧</h1>
+    </header>
+
+
+    <aside class="sidebar">
+    <div class="sidebar-title">スタディルーム</div>
+    <nav class="nav">
+        <!-- 1つ上の階層にある home.html へ -->
+        <a href="../home.html" class="nav-item">
+            <span class="icon"></span>HOME
+        </a>
+
+        <!-- 自分自身（task/index.html） -->
+        <a href="index.html" class="nav-item active">
+            <span class="icon"></span>タスク
+        </a>
+
+        <!-- 1つ上の階層にある profile.html へ -->
+        <a href="../profile.html" class="nav-item">
+            <span class="icon"></span>プロフィール
+        </a>
+    </nav>
+    <div class="sidebar-footer">
+        ログイン中: user@example.com
+    </div>
+</aside>
+
+
+    <main class="page-main">
+        <!-- 達成度セクション -->
+        <section class="section-card">
+            <h2 class="section-title">進捗</h2>
+
+            <div class="progress-panel">
+                <!-- 円グラフ（33% の例） -->
+                <div
+                    class="progress-circle"
+                    data-progress="33"
+                    style="--progress: 0.33"
+                >
+                </div>
+
+                <!-- 横バー＋テキスト -->
+                <div class="progress-info">
+                    <p class="progress-label">進捗度数</p>
+                    <div class="progress-bar" aria-label="Task completion">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <p class="progress-detail">1 / 3 tasks completed (33%)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- タスク一覧 -->
+        <section class="section-card">
+            <h2 class="section-title">今日のタスク</h2>
+            <ul class="task-list">
+                <li class="task-item">Task 1: 英語の文法</li>
+                <li class="task-item">Task 2: 歴史暗記</li>
+                <li class="task-item">Task 3: 数学課題</li>
+                <li class="task-item">Task 4: 国語宿題</li>
+                <li class="task-item">Task 5: 原子記号暗記</li>
+            </ul>
+        </section>
+
+        <!-- 新規タスク追加 -->
+        <section class="section-card">
+            <h2 class="section-title">タスク 追加</h2>
+            <form class="task-form">
+                <label for="new-task" class="task-label">内容:</label>
+                <input type="text" id="new-task" name="new-task" required class="task-input">
+                <button type="submit" class="task-button">追加</button>
+            </form> 
+        </section>  
+    </main>
+</body>
+</html>
